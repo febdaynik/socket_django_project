@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clicker</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+</head>
+<body>
+
+	<div class="wrapper">
+		<div class="content">
+		<data class="log" id="data-log">Комната №{{ url }}</data>
+		<data class="log" id="online-room">Онлайн: <span id="online"></span></data>
+			<div class="block-content">
+				<input type="submit" id="input-click" value="Клик" onclick="clicker()">
+				<div class="block-score"><p id="score">
+					{% if score_room|length > 0 %}
+						{% for el in score_room %}
+							{{ el.score }}
+						{% endfor %}
+					{% else %}
+						0
+					{% endif %}
+				</p></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="{% static 'game_script.js' %}"></script>
+
+</body>
+</html>

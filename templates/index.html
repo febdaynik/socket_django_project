@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Real time django</title>
+</head>
+<body>
+	
+	<div class="wrapper">
+		<div class="text" id="app">{{text}}</div>
+	</div>
+
+	<script type="text/javascript">
+		
+		var socket = new WebSocket('ws://localhost:8000/ws/some_url/');
+		socket.onmessage = function(event) {
+			var data = JSON.parse(event.data);
+			console.log(data);
+
+			document.querySelector('#app').innerText = data.message;
+		}
+
+
+	</script>
+
+</body>
+</html>
